@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="./assets/webpay-logo.png"
+      type="image/x-icon"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <!-- <div id="preloader">
+      <div class="loader"></div>
+  </div> -->
+    <div id="register" class="contain">
+      <div class="logo">
+        <img
+            class="img"
+            src="{% static 'Images/webpay-logo.png' %}"
+            alt="logo icon"
+          />
+      </div>
+
+      <form class="form" class="/register" method="post">
+        {% csrf_token %}
+        <input
+          type="text"
+          placeholder="Username"
+          name="username"
+        />
+
+        <input
+          type="email"
+          placeholder="Email or mobile number"
+          name="email"
+        />
+
+        <input placeholder="Choose Password" name="password1" type="password" />
+        <input placeholder="Confirm Password" name="password2" type="password" />
+
+        <!-- <a href="#" class="">Forget Email?</a> -->
+
+        <button class="btn" type="submit">Next</button>
+        <div class="or">
+          <div class="line"></div>
+          <p>or</p>
+          <div class="line"></div>
+        </div>
+      </form>
+      <button class="btn3 btn2">Login</button>
+    </div>
+    <footer class="authfooter">
+      <p>
+        © Webapps2024 . All rights reserved | Privacy Policy | Terms of Use |
+        Contact us
+      </p>
+    </footer>
+    <script src="{% static "js/script.js" %}"></script>
+  </body>
+</html>
