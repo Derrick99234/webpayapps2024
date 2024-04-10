@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+:root{
+    --primary-color: #3c91df;
+    --text-dark: #282c34;
+    --white: #fff;
+}
+
+.head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    width: 100%;
+    border: 1px solid red;
+    background-color: var(--white);
+    padding: 0 70px;
+}
+.logo > a img{
+    height: 55px;
+}
+
+.head a{
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.auth{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+
+.btn{
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--white);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.auth :last-child{
+    background-color: var(--primary-color);
+    color: var(--white);
+   
+}

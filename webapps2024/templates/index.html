@@ -1,37 +1,32 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     <link
       rel="shortcut icon"
-      href="./assets/webpay-logo.png"
+      href="{% static 'images/webpay-logo.png' %}"
       type="image/x-icon"
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webapps2024</title>
   </head>
-  <body>
+<body>
+    <header class="head">
+        <div class="logo">
+            <a href=""><img src="{% static 'images/webpay-logo.png' %}" alt=""></a>
+        </div>
+        <a href="#">PERSONAL</a>
+        <div class="auth">
+            <button class="btn">Login</button>
+            <button class="btn">Sign Up</button>
+        </div>
+    </header>
     <main>
-      <img
-        class="img"
-        src="{% static 'Images/webpay-logo.png' %}"
-        alt="logo icon"
-      />
-      <h1>Webappa2024</h1>
-      <p>welcome to Webappa2024 an online payment platform</p>
-      <p>Here we send and recieve money through email</p>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
+        <h1>Webapps2024</h1>
+        <p>
+            This is a web app for making payment and recieving transfer.
+        </p>
     </main>
-
-    <footer class="authfooter">
-      <p>
-        © Webapps2024 . All rights reserved | Privacy Policy | Terms of Use |
-        Contact us
-      </p>
-    </footer>
-     <script src="{% static "js/script.js" %}"></script>
-  </body>
+</body>
 </html>
