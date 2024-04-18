@@ -16,7 +16,11 @@
     <!-- <div id="">
       <div class="loader"></div>
   </div> -->
-    <div class="forms" action="/login" method="post">
+    {% comment %}
+    <div id="alert-container" data-messages="{{ messages_json }}"></div>
+    {% endcomment %}
+
+    <div>
       <div id="login" class="contain">
         <div class="logo">
           <img
@@ -25,12 +29,12 @@
             alt="logo icon"
           />
         </div>
-
-        <form class="form" method="post">
+        <form class="form" action="{% url 'login' %}" method="post">
+          {% csrf_token %}
           <input
-            name="email"
-            type="email"
-            placeholder="Email or username"
+            name="username_or_email"
+            type="text"
+            placeholder="Username or Email"
           />
           <input
             name="password"
@@ -46,8 +50,8 @@
             <p>or</p>
             <div class="line"></div>
           </div>
-          <button class="btn2" type="submit">Register</button>
         </form>
+        <button class="btn2">Register</button>
       </div>
     </div>
     <footer class="authfooter">
@@ -57,6 +61,6 @@
       </p>
     </footer>
 
-    <script src="{% static "js/script.js" %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

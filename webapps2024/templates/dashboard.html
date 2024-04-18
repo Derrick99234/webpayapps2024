@@ -1,8 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="dashboard.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
@@ -11,7 +12,9 @@
     <header class="header1">
       <div class="first">
         <div class="logo">
-          <a href="./index.html"><img src="./webpay-logo.png" alt="logo" /></a>
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
+          </a>
         </div>
         <div class="nav">
           <a href="#">Home</a>
@@ -23,47 +26,63 @@
 
       <div class="second">
         <div class="bell">
-            <img src="./bell.svg" alt="" />
+          <img src="{% static 'images/bell.svg' %}" alt="" />
 
-            <div class="num">9</div>
+          <div class="num">9</div>
         </div>
-    
-        <img src="./settings.svg" alt="" />
-
+        <img src="{% static 'images/settings.svg' %}" alt="" />
         <p class="logout">LOGOUT</p>
       </div>
     </header>
     <header class="header2">
-      <a href="#">Account</a>
-      <a href="#">Payments</a>
-      <a href="#">notification</a>
+      <div>
+        <a href="#">Account</a>
+        <a href="#">Payments</a>
+        <a href="#">notification</a>
+      </div>
+      <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div>
     </header>
 
+    {% comment %}
+    <div class="detailsCard">
+      <div class="sendCard">
+        <div class="sendCardTxt"></div>
 
-<div class="detailsCard">
-    <div class="sendCard">
-      <img src="" alt="image">
-
-      <div class="sendCardTxt">
-
+        <div class="btns">
+          <a href="/">Send Money</a>
+        </div>
       </div>
+      <div class="sendCard">
+        <img src="" alt="image" />
 
-      <div class="btns">
-        <a href="/">Send Money</a>
-      </div>
-    </div>
-    <div class="sendCard">
-      <img src="" alt="image">
+        <div class="sendCardTxt"></div>
 
-      <div class="sendCardTxt">
-
-      </div>
-
-      <div class="btns">
-        <a href="/">Recieve Money</a>
+        <div class="btns">
+          <a href="/">Recieve Money</a>
+        </div>
       </div>
     </div>
-</div>
-
+    {% endcomment %}
+    <div class="send_money">
+      <form method="post" action="{% url 'send_money' %}">
+        {% csrf_token %}
+        <div>
+          <label for="balance">Balance</label>
+          <input type="text" value="{{balance}}" name="balance" disabled />
+        </div>
+        <div>
+          <label for="email">Email Address of the reciever</label>
+          <input type="email" name="email" required />
+        </div>
+        <div>
+          <label for="amount">Amount</label>
+          <input type="text" name="amount" required />
+        </div>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </body>
 </html>

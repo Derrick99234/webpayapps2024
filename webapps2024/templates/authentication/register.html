@@ -16,6 +16,7 @@
     <!-- <div id="preloader">
       <div class="loader"></div>
   </div> -->
+    {% comment %} <div id="alert-container" data-messages="{{ messages_json  }}"></div> {% endcomment %}
     <div id="register" class="contain">
       <div class="logo">
         <img
@@ -25,22 +26,47 @@
           />
       </div>
 
+       {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
       <form class="form" class="/register" method="post">
         {% csrf_token %}
-        <input
+
+        <div class="name">
+          <input type="text" placeholder="first name" name="fname" required>
+          <input type="text" placeholder="last name" name="lname" required>
+        </div>
+
+        <div class="name">
+          <input
           type="text"
           placeholder="Username"
           name="username"
+          required
         />
+        <select name="currency" id="currency">
+          <option value="">--currency--</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+        </select>
+        </div>
 
         <input
           type="email"
-          placeholder="Email or mobile number"
+          placeholder="Email"
           name="email"
+          required
         />
-
-        <input placeholder="Choose Password" name="password1" type="password" />
-        <input placeholder="Confirm Password" name="password2" type="password" />
+        <div class="password">
+          <input placeholder="Choose Password" name="password1" type="password" required />
+          <input placeholder="Confirm Password" name="password2" type="password" required />
+        </div>
+        
 
         <!-- <a href="#" class="">Forget Email?</a> -->
 

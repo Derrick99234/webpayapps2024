@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let loginButton = document.querySelector(".btn3");
+  let loginButton = document.querySelector(".btn2");
+
   function changeRoute() {
     alert("done bruh");
-    window.location.href = "/login";
+    window.location.href = "/register";
   }
 
   loginButton.addEventListener("click", function () {
