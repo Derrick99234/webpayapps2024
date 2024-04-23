@@ -31,15 +31,12 @@
         </div>
         <form class="form" action="{% url 'login' %}" method="post">
           {% csrf_token %}
-          <input
-            name="username_or_email"
-            type="text"
-            placeholder="Username or Email"
-          />
+          <input name="username" type="text" placeholder="Username" required />
           <input
             name="password"
             type="password"
             placeholder="Enter your password"
+            required
           />
 
           <a href="#" class="forgetmail">Forget Email?</a>
@@ -51,7 +48,7 @@
             <div class="line"></div>
           </div>
         </form>
-        <button class="btn2">Register</button>
+        <button class="btn23">Register</button>
       </div>
     </div>
     <footer class="authfooter">

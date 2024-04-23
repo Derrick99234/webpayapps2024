@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.request-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+ 
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+textarea {
+  resize: none;
+}
+
+button[type="submit"] {
+  background-color: #1e91d6;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #1e91d6;
+}
+#request-money h1 {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: "Arial Black", sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+
+.transaction-table th,
+.transaction-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.transaction-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.transaction-table tbody tr:hover {
+  background-color: #e2e2e2;
+}
+
+
+.transaction-table .status-completed {
+  color: #008000; 
+  font-size: 12px; 
+}
+
+.transaction-table .status-pending {
+  color: #ffa500; 
+  font-size: 12px; 
+}
+
+.transaction-table .status-refused,
+.transaction-table .status-canceled {
+  color: #ff0000; 
+  font-size: 12px; 
+}
+
+.title-head {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: "Arial Black", sans-serif;
+  color: #fff;
+  background-color: #1e91d6;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 5px solid #290707;
+}
+
+.headCon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 45px;
+  width: 100%;
+  background-color: #90c6e8c9;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile_name h4 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.profile_name small {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.profile_img {
+  border: 4px solid #1e91d6;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+
+.profile_img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.balance_name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.balance_img img {
+  height: 17px;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+
+}
+
+.profile-card h {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-details {
+  display: flex;
+align-items: center;
+
+  gap: 5px;
+  width: 100%;
+}
+
+.card-details label {
+  font-weight: bold;
+}
+
+.card-details input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.card-details button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width:40%;
+  margin: 0 auto;
+
+}
+
+.user-card h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-card .card-info {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-card .card-info span {
+  margin-right: 10px;
+}
+
+.cardinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 50px;
+}
+
+.gradient-mastercard {
+    background: linear-gradient(45deg, rgba(255,127,0,1), rgba(255,0,0,0.5) 45%, rgba(255,0,0,0.5));
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s ease infinite;
+    position: relative;
+}
+
+.gradient-mastercard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+}
+
+
+.container1 {
+    z-index: -999;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;  
+    background-color: #fff;
+    gap: 10px;
+    border: 2px solid red;
+    height: 100%;
+}
+
+.card {
+    width: calc(33.33% - 20px);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* overflow: hidden; */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 20px;
+    padding: 15px;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.info {
+    padding: 20px;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.field span {
+    color: #666;
+}
+
+.field p {
+    margin: 0;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+.container-pay {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    height: fit-content;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.payment-request {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.payment-request h1 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.request-details {
+    margin-bottom: 30px;
+}
+
+.request-details p {
+    margin: 10px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.accept-btn, .reject-btn {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background-color 0.3s;
+}
+
+.accept-btn:hover, .reject-btn:hover {
+    background-color: #007bff;
+}
+
+
+.pay-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    width: 100%;
+}

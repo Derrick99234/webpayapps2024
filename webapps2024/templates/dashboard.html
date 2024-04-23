@@ -26,19 +26,21 @@
 
       <div class="second">
         <div class="bell">
-          <img src="{% static 'images/bell.svg' %}" alt="" />
-
-          <div class="num">9</div>
+          <a href="{% url "view_notifications"%}">
+            <img src="{% static 'images/bell.svg' %}" alt="" />
+            <div class="num">9</div>
+          </a>
         </div>
         <img src="{% static 'images/settings.svg' %}" alt="" />
-        <p class="logout">LOGOUT</p>
+        <p class="logout"><a href="{% url 'logout' %}">Logout</a></p>
       </div>
     </header>
     <header class="header2">
       <div>
         <a href="#">Account</a>
-        <a href="#">Payments</a>
-        <a href="#">notification</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
       </div>
       <div class="user">
         <span id="user">Hi👋 {{username|upper }}</span>
@@ -46,7 +48,7 @@
       </div>
     </header>
 
-    {% comment %}
+
     <div class="detailsCard">
       <div class="sendCard">
         <div class="sendCardTxt"></div>
@@ -65,8 +67,8 @@
         </div>
       </div>
     </div>
-    {% endcomment %}
-    <div class="send_money">
+
+    {% comment %} <div class="send_money">
       <form method="post" action="{% url 'send_money' %}">
         {% csrf_token %}
         <div>
@@ -83,6 +85,6 @@
         </div>
         <button type="submit">Send</button>
       </form>
-    </div>
+    </div> {% endcomment %}
   </body>
 </html>

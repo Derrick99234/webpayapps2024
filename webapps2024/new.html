@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href=" new.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .container {
+        position: relative;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .sidebar {
+        flex: 0 0 250px;
+        background-color: #1e91d6;
+        color: #fff;
+        padding-top: 20px;
+        overflow-y: auto;
+        z-index: 999;
+        border-right: 5px solid #290707;
+      }
+      .sidebar .link {
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        transition: background-color 0.3s ease;
+      }
+      .sidebar .link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .sidebar .link.active {
+        background-color: #1f60e154;
+      }
+      .sidebar .sub-menu {
+        /* margin-left: 20px; */
+        display: none;
+      }
+      .sidebar .sub-menu.show {
+        display: block;
+      }
+      .sidebar .sub-link {
+        padding: 10px 30px;
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        transition: background-color 0.3s ease;
+      }
+      .sidebar .sub-link:hover {
+        background-color: #555;
+      }
+      .content {
+        flex: 1;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .page {
+        width: 100%;
+        height: 100%;
+        margin-left: 250px;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: aliceblue;
+        z-index:990;
+      }
+      .page.active {
+        display: block;
+      }
+      .slide-in {
+        transform: translateX(100%);
+        animation: slideIn 0.3s forwards;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="headCon">
+      
+        <div class="profile">
+          <div class="profile_img">
+            <img
+              src="https://www.w3schools.com/howto/img_avatar.png"
+              alt="Avatar"
+            />
+          </div>
+
+          <div class="profile_name">
+            <h4>Charlotte Armstrong</h4>
+            <small>armstrongcharlotte@outlook.com</small>
+          </div>
+       
+      </div>
+
+      
+        <div class="balance">
+          <div class="balance_img">
+            <img src="https://img.icons8.com/color/48/000000/money.png" />
+          </div>
+          <div class="balance_name">
+            <h4>Balance</h4>
+            <small>$1000</small>
+          </div>
+        </div>
+      </div>
+
+    </header>
+    <div class="container">
+
+      
+      <div class="sidebar">
+        <a
+          href="#"
+          class="link active"
+          onclick="toggleSubMenu('deposit-menu'); markAsActive(this);"
+          >Deposit Money</a
+        >
+        <div id="deposit-menu" class="sub-menu">
+          <a
+            href="#"
+            class="sub-link"
+            onclick="showPage('card-deposit'); markAsActive(this);"
+            >Card Deposit</a
+          >
+          <a
+            href="#"
+            class="sub-link"
+            onclick="showPage('bank-deposit'); markAsActive(this);"
+            >Bank Deposit</a
+          >
+          <a
+            href="#"
+            class="sub-link"
+            onclick="showPage('request-money'); markAsActive(this);"
+            >Request Money</a
+          >
+        </div>
+        <a
+          href="#"
+          class="link"
+          onclick="showPage('payment-request'); markAsActive(this);"
+          >Payment Request</a
+        >
+        <a
+          href="#"
+          class="link"
+          onclick="showPage('send-money'); markAsActive(this);"
+          >Send Money</a
+        >
+        <a
+          href="#"
+          class="link"
+          onclick="showPage('transaction-history'); markAsActive(this);"
+          >Transaction History</a
+        >
+      </div>
+      <div class="container1">
+        <div class="card">
+            <h2>User Information</h2>
+            <div class="info">
+                <div class="field">
+                    <span>Name:</span>
+                    <p>John Doe</p>
+                </div>
+                <div class="field">
+                    <span>Email:</span>
+                    <p>john.doe@example.com</p>
+                </div>
+                <div class="field">
+                    <span>Phone Number:</span>
+                    <p>+1234567890</p>
+                </div>
+            </div>
+            <button onclick="copyInformation()">Copy Information</button>
+        </div>
+        <div class="card">
+            <h2>User Address</h2>
+            <div class="info">
+                <div class="field">
+                    <span>Address:</span>
+                    <p>123 Main Street</p>
+                </div>
+                <div class="field">
+                    <span>Postal Code:</span>
+                    <p>12345</p>
+                </div>
+                <div class="field">
+                    <span>Country:</span>
+                    <p>United States</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>User Settings & Preferences</h2>
+            <div class="info">
+                <div class="field">
+                    <span>Language:</span>
+                    <p>English</p>
+                </div>
+                <div class="field">
+                    <span>Theme:</span>
+                    <p>Light</p>
+                </div>
+                <div class="field">
+                    <span>Notifications:</span>
+                    <p>Enabled</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+       
+
+
+
+
+        <div id="card-deposit" class="page">
+          <h1 class="title-head">Card Deposit</h1>
+          <div class="cardinfo">
+            <div class="profile-card">
+                <div class="card-details">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="Enter card number">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YYYY">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="CVV">
+                    <button onclick="saveCardDetails()">Save Card</button>
+                </div>
+            </div>
+    
+    
+            <div class="user-card gradient-mastercard" id="user-card" style="display:none;">
+                <div class="card-info" id="card-number-display"></div>
+                <div class="card-info" id="expiry-date-display"></div>
+                <div class="card-info" id="cvv-display"></div>
+            </div>
+    
+           </div>
+        </div>
+        <div id="bank-deposit" class="page">
+          <h1 class="title-head">Bank Deposit</h1>
+          <p>This is the bank deposit page content.</p>
+        </div>
+        <div id="request-money" class="page">
+          <h1 class="title-head">Request Money</h1>
+          <form id="request-form" class="request-form">
+            <div class="form-group">
+              <label for="friend-email">Friend's Email:</label>
+              <input
+                type="email"
+                id="friend-email"
+                name="friend-email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount:</label>
+              <input type="number" id="amount" name="amount" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit">Send Request</button>
+          </form>
+        </div>
+
+        <div id="payment-request" class="page">
+          <h1 class="title-head">Payment Request</h1>
+          <div class="pay-grid">
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-pay">
+                <div class="payment-request">
+                    <h1>Payment Request</h1>
+                    <div class="request-details">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Amount:</strong> $100</p>
+                    </div>
+                    <div class="buttons">
+                        <button class="accept-btn">Accept Payment</button>
+                        <button class="reject-btn">Reject Payment</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+         
+        </div>
+        <div id="send-money" class="page">
+          <h1 class="title-head">Send Money</h1>
+          <p>This is the send money page content.</p>
+        </div>
+        <div id="transaction-history" class="page">
+          <h1 class="title-head">Transaction History</h1>
+          <div class="table-wrapper">
+            <table class="transaction-table">
+              <thead>
+                <tr>
+                  <th>Sender</th>
+                  <th>Recipient</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date & Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>Jane Smith</td>
+                  <td>£100</td>
+                  <td class="status-completed">Completed</td>
+                  <td>2024-04-22 10:30 AM</td>
+                </tr>
+                <tr>
+                  <td>Jane Smith</td>
+                  <td>Mark Johnson</td>
+                  <td>£50</td>
+                  <td class="status-completed">Completed</td>
+                  <td>2024-04-23 11:45 AM</td>
+                </tr>
+                <tr>
+                  <td>Mark Johnson</td>
+                  <td>John Doe</td>
+                  <td>£75</td>
+                  <td class="status-canceled">Pending</td>
+                  <td>2024-04-24 09:15 AM</td>
+                </tr>
+                <tr>
+                  <td>Mark Johnson</td>
+                  <td>John Doe</td>
+                  <td>£75</td>
+                  <td class="status-pending">Pending</td>
+                  <td>2024-04-24 09:15 AM</td>
+                </tr>
+                <tr>
+                  <td>Mark Johnson</td>
+                  <td>John Doe</td>
+                  <td>£75</td>
+                  <td class="status-canceled">Pending</td>
+                  <td>2024-04-24 09:15 AM</td>
+                </tr>
+
+                <!-- Add more transaction rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleSubMenu(menuId) {
+        var subMenu = document.getElementById(menuId);
+        subMenu.classList.toggle("show");
+      }
+
+      function showPage(pageId) {
+        var pages = document.querySelectorAll(".page");
+        pages.forEach(function (page) {
+          if (page.id === pageId) {
+            page.classList.add("active", "slide-in");
+          } else {
+            page.classList.remove("active");
+          }
+        });
+      }
+
+      document
+        .getElementById("request-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var friendEmail = document.getElementById("friend-email").value;
+          // Here you can add your logic to submit the request
+          console.log("Request submitted to:", friendEmail);
+          // Clear the input field after submission
+          document.getElementById("friend-email").value = "";
+        });
+
+      function markAsActive(link) {
+        var links = document.querySelectorAll(".link");
+        links.forEach(function (link) {
+          link.classList.remove("active");
+        });
+        link.classList.add("active");
+      }
+
+
+
+      function saveCardDetails() {
+        var cardNumberInput = document.getElementById('card-number').value;
+        var expiryDateInput = document.getElementById('expiry-date').value;
+        var cvvInput = document.getElementById('cvv').value;
+
+        document.getElementById('card-number-display').innerText = "card number " + cardNumberInput;
+        document.getElementById('expiry-date-display').innerText = "expiry date " + expiryDateInput;
+        document.getElementById('cvv-display').innerText = "cvv" + cvvInput;
+
+        // Show the user card
+        document.getElementById('user-card').style.display = 'block';
+    }
+
+    function copyInformation() {
+                    // Implementation to copy information to clipboard
+                    alert("Information copied!");
+                }
+    </script>
+  </body>
+</html>

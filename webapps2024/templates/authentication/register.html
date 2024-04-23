@@ -25,14 +25,14 @@
             alt="logo icon"
           />
       </div>
-
+{% comment %} 
        {% if messages %}
             <ul>
                 {% for message in messages %}
                     <li>{{ message }}</li>
                 {% endfor %}
             </ul>
-        {% endif %}
+        {% endif %} {% endcomment %}
       <form class="form" class="/register" method="post">
         {% csrf_token %}
 
@@ -49,7 +49,6 @@
           required
         />
         <select name="currency" id="currency">
-          <option value="">--currency--</option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>

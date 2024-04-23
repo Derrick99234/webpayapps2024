@@ -1,0 +1,51 @@
+<!-- notification.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .notification {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .notification p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Notifications</h2>
+        {% if notifications %}
+            {% for notification in notifications %}
+                <div class="notification">
+                    <p>{{ notification.message }}</p>
+                    <p>{{ notification.created_at }}</p> <!-- Add timestamp if available -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No notifications</p>
+        {% endif %}
+    </div>
+</body>
+</html>

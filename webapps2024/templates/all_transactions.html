@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Transactions</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <style>
+      .transaction-table th,
+      .transaction-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .transaction-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .transaction-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .transaction-table tbody tr:hover {
+        background-color: #e2e2e2;
+      }
+
+      .transaction-table .status-completed {
+        color: #008000;
+        font-size: 12px;
+      }
+
+      .transaction-table .status-pending {
+        color: #ffa500;
+        font-size: 12px;
+      }
+
+      .transaction-table .status-refused,
+      .transaction-table .status-canceled {
+        color: #ff0000;
+        font-size: 12px;
+      }
+
+      .title-head {
+        font-size: 32px;
+        font-weight: bold;
+        font-family: "Arial Black", sans-serif;
+        margin-bottom: 20px;
+        padding: 20px 0;
+        text-align: center;
+        {% comment %} border-bottom: 5px solid #290707; {% endcomment %}
+      }
+      table {
+        margin: 30px auto;
+        width: 800px;
+        {% comment %} border: 2px solid red; {% endcomment %}
+      }
+    </style>
+  </head>
+  <body>
+      <header class="header1">
+      <div class="first">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
+          </a>
+        </div>
+        <div class="nav">
+          <a href="#">Home</a>
+          <a href="#">Send</a>
+          <a href="#">Wallet</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+
+      <div class="second">
+        <div class="bell">
+          <a href="{% url "view_notifications"%}">
+            <img src="{% static 'images/bell.svg' %}" alt="" />
+            <div class="num">9</div>
+          </a>
+        </div>
+        <img src="{% static 'images/settings.svg' %}" alt="" />
+        <p class="logout"><a href="{% url 'logout' %}">Logout</a></p>
+      </div>
+    </header>
+    <header class="header2">
+      <div>
+        <a href="#">Account</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
+      </div>
+      {% comment %} <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div> {% endcomment %}
+    </header>
+    <h1 class="title-head">All Transactions</h1>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Recipient</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+        <tr>
+          <td>{{ transaction.sender }}</td>
+          <td>{{ transaction.recipient }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.status }}</td>
+          <td>{{ transaction.timestamp }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

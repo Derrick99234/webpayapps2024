@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Payment Dashboard</title>
+    <link rel="stylesheet" href="{% static "css/make_payment.css"%}" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="user-info">
+        <img src="profile_picture.jpg" alt="Profile Picture" />
+        <div class="user-details">
+          <p>User ID: {{pk}}</p>
+          <p>User Email: {{email}}</p>
+        </div>
+      </div>
+      <div class="balance">
+        <p>Your Balance</p>
+        <span>{{balance}} {{currency}}</span>
+      </div>
+    </div>
+    <div class="container">
+      <main class="main">
+        <section class="send-money">
+          <h2>Send Money</h2>
+          <form method="post" action="{% url 'send_money' %}">
+            {% csrf_token %}
+            <input
+              type="email"
+              name="email"
+              placeholder="Recipient's Email"
+              required
+            />
+            <input type="number" placeholder="Amount" name="amount" required />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+        <section class="request-money">
+          <h2>Request Money</h2>
+          <form method="post" action="{% url 'request_money' %}">
+            {% csrf_token %}
+            <input
+              type="text"
+              placeholder="Email to request from"
+              name="email"
+              required
+            />
+            <input type="number" placeholder="Amount" name="amount" required />
+            <button type="submit">Request</button>
+          </form>
+        </section>
+      </main>
+      {% if messages %}
+      <script>
+        const messages = {{ messages_json|safe }};
+      </script>
+      <script src="{% static 'js/errorMessage.js' %}"></script>
+      {% endif %}
+      <!-- <section class="transaction-history">
+            <h2>Transaction History</h2>
+            <ul>
+                <li>You sent $100 to user@example.com</li>
+                <li>You received $50 from anotheruser@example.com</li>
+                
+            </ul>
+        </section> -->
+    </div>
+    <footer>
+      <p>&copy; 2024 User Payment Dashboard. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

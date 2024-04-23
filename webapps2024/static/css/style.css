@@ -44,7 +44,7 @@ body {
   overflow: hidden;
 }
 
-.form input, 
+.form input,
 .form select {
   width: 100%;
   border: none;
@@ -56,7 +56,8 @@ body {
   border-radius: 8px;
 }
 
-.password, .name {
+.password,
+.name {
   display: flex;
   gap: 5px;
 }
@@ -81,7 +82,8 @@ body {
   font-size: 15px;
   font-weight: 600;
 }
-.btn2 {
+.btn2,
+.btn23 {
   cursor: pointer;
   width: 100%;
   height: 46px;
@@ -272,28 +274,28 @@ body {
 }
 
 #alert-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .alert {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
 
 .alert-error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <style>
+      .container-pay {
+        display: flex;
+        /* justify-content: center;
+    align-items: center; */
+        height: fit-content;
+        padding-left: 10px;
+        width: 100%;
+      }
+
+      .payment-request {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .payment-request h1 {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .request-details {
+        margin-bottom: 30px;
+      }
+
+      .request-details p {
+        margin: 10px 0;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+      }
+
+      .accept-btn,
+      .reject-btn {
+        background-color: #0056b3;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 8px;
+        transition: background-color 0.3s;
+      }
+
+      .accept-btn:hover,
+      .reject-btn:hover {
+        background-color: #007bff;
+      }
+      .no_request {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+        <header class="header1">
+      <div class="first">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
+          </a>
+        </div>
+        <div class="nav">
+          <a href="#">Home</a>
+          <a href="#">Send</a>
+          <a href="#">Wallet</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+
+      <div class="second">
+        <div class="bell">
+          <a href="{% url "view_notifications"%}">
+            <img src="{% static 'images/bell.svg' %}" alt="" />
+            <div class="num">9</div>
+          </a>
+        </div>
+        <img src="{% static 'images/settings.svg' %}" alt="" />
+        <p class="logout"><a href="{% url 'logout' %}">Logout</a></p>
+      </div>
+    </header>
+    <header class="header2">
+      <div>
+        <a href="#">Account</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
+      </div>
+      {% comment %} <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div> {% endcomment %}
+    </header>
+    {% if pending_requests %}
+    <h2>Pending Money Requests</h2>
+    <ul>
+      {% for request in pending_requests %}
+      <li>
+        <div class="container-pay">
+          <div class="payment-request">
+            <h1>Payment Request</h1>
+            <div class="request-details">
+              <p><strong>Name:</strong> {{ request.sender.user.username }}</p>
+              <p><strong>Amount:</strong> {{ request.amount }}</p>
+            </div>
+            <div class="buttons">
+              <a href="{% url 'accept_request' request.pk %}" class="accept-btn"
+                >Accept Payment</a
+              >
+              <a href="{% url 'reject_request' request.pk %}" class="reject-btn"
+                >Reject Payment</a
+              >
+            </div>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no_request">You have no pending money requests.</p>
+    {% endif %}
+  </body>
+</html>
