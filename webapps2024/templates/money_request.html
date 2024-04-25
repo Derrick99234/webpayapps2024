@@ -22,13 +22,14 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        text-align: center;
+        {% comment %} text-align: center; {% endcomment %}
       }
 
       .payment-request h1 {
         font-size: 14px;
         color: #333;
         margin-bottom: 20px;
+        text-align: center;
       }
 
       .request-details {
@@ -37,7 +38,7 @@
 
       .request-details p {
         margin: 10px 0;
-        font-size: 12px;
+        font-size: 16px;
         color: #666;
       }
 
@@ -48,7 +49,7 @@
 
       .accept-btn,
       .reject-btn {
-        background-color: #0056b3;
+        background-color: crimson;
         color: #fff;
         border: none;
         padding: 6px 12px;
@@ -59,17 +60,22 @@
         transition: background-color 0.3s;
       }
 
+      .accept-btn{
+        background-color: lightgreen;
+      }
+
       .accept-btn:hover,
       .reject-btn:hover {
         background-color: #007bff;
       }
       .no_request {
         text-align: center;
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
-        <header class="header1">
+      <header class="header1">
       <div class="first">
         <div class="logo">
           <a href="{% url 'home' %}">
@@ -108,7 +114,7 @@
       </div> {% endcomment %}
     </header>
     {% if pending_requests %}
-    <h2>Pending Money Requests</h2>
+    <h2 class="no_request">Pending Money Requests</h2>
     <ul>
       {% for request in pending_requests %}
       <li>

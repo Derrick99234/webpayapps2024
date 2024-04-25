@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Payment Dashboard</title>
     <link rel="stylesheet" href="{% static "css/make_payment.css"%}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
   </head>
   <body>
+
     <div class="header">
       <div class="user-info">
-        <img src="profile_picture.jpg" alt="Profile Picture" />
+        <div class="profile_img">
+            <img
+              src="https://www.w3schools.com/howto/img_avatar.png"
+              alt="Avatar"
+            />
+          </div>
         <div class="user-details">
-          <p>User ID: {{pk}}</p>
+          <p>User ID: {{username}}</p>
           <p>User Email: {{email}}</p>
         </div>
       </div>
@@ -21,6 +28,18 @@
         <span>{{balance}} {{currency}}</span>
       </div>
     </div>
+          <header class="header2">
+      <div>
+        <a href="#">Account</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
+      </div>
+      {% comment %} <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div> {% endcomment %}
+    </header>
     <div class="container">
       <main class="main">
         <section class="send-money">

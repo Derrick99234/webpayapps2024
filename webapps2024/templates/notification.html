@@ -1,11 +1,13 @@
 <!-- notification.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,6 +36,44 @@
     </style>
 </head>
 <body>
+          <header class="header1">
+      <div class="first">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
+          </a>
+        </div>
+        <div class="nav">
+          <a href="#">Home</a>
+          <a href="#">Send</a>
+          <a href="#">Wallet</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+
+      <div class="second">
+        <div class="bell">
+          <a href="{% url "view_notifications"%}">
+            <img src="{% static 'images/bell.svg' %}" alt="" />
+            <div class="num">9</div>
+          </a>
+        </div>
+        <img src="{% static 'images/settings.svg' %}" alt="" />
+        <p class="logout"><a href="{% url 'logout' %}">Logout</a></p>
+      </div>
+    </header>
+    <header class="header2">
+      <div>
+        <a href="#">Account</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
+      </div>
+      {% comment %} <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div> {% endcomment %}
+    </header>
     <div class="container">
         <h2>Notifications</h2>
         {% if notifications %}
