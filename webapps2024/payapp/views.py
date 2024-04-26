@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import UserInfo, Request, Transaction, Notification
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ValidationError  # For currency validation
+from django.core.exceptions import ValidationError
 from decimal import Decimal
 import logging
 import json
@@ -37,19 +37,15 @@ def send_transaction_notification(sender, recipient, message):
     Notification.objects.create(user=sender, message=message)
     Notification.objects.create(user=recipient, message=message)
 
-# views.py
 
 
 def convert_currency(request, currency1, currency2, amount_of_currency1):
-    # Define conversion rates as a nested dictionary
-    # The outer keys represent currency1, and the inner keys represent currency2
     conversion_rates = {
         "USD": {"EUR": 0.85, "GBP": 0.73},
         "EUR": {"USD": 1.18, "GBP": 0.86},
         "GBP": {"USD": 1.37, "EUR": 1.16},
     }
 
-    # Convert amount to float
     try:
         amount_of_currency1 = float(amount_of_currency1)
     except ValueError:
@@ -77,7 +73,6 @@ def send_money(request):
         amount = request.POST.get("amount")
         recipient_email = request.POST.get("email")
 
-        # Validate amount
         try:
             amount = float(amount)
             if amount <= 0:
@@ -113,7 +108,6 @@ def send_money(request):
             conversion_url = f"http://localhost:8000/payapp/conversion/{sender_info.currency}/{recipient_currency}/{amount}/"
             response = requests.get(conversion_url)
 
-            # Check if the request was successful (status code 200)
             if response.status_code == 200:
                 data = response.json()
                 converted_amount = data.get('converted_amount')
@@ -242,8 +236,7 @@ def accept_request(request, pk):
           last_transaction = transaction_objs.first()
           last_transaction.status = "completed"
           last_transaction.save()
-        
-        # Redirect to dashboard with sender's user ID
+
         messages.success(request, f"Successfully accepted request from {request_obj.sender.user.username}.")
         send_transaction_notification(sender=sender, recipient=receiver, message=f"{receiver.user.username} accepted {sender.user.username} request of {amount} {sender.currency}")
         return redirect('dashboard', pk=request.user.pk, username=request.user)
@@ -285,3 +278,17 @@ def view_notifications(request):
     notifications = Notification.objects.filter(user=userInfo).order_by("-created_at")
 
     return render(request, "notification.html", {"notifications": notifications})
+
+
+def deposit(request):
+    userInfo = UserInfo.objects.get(user=request.user)
+
+    if request.method == "POST":
+        amount = request.POST.get("amount_to_deposit")
+
+        # Update the User Balance
+
+        userInfo.balance += Decimal(amount)
+        userInfo.save()
+        return redirect('dashboard', pk=request.user.pk, username=request.user.username)
+    return render(request, "deposit.html")

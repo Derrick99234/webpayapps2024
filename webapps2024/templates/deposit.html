@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/deposit.css' %}" />
+</head>
+<body>
+        <header class="header1">
+      <div class="first">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
+          </a>
+        </div>
+        {% comment %} <div class="nav">
+          <a href="#">Home</a>
+          <a href="#">Send</a>
+          <a href="#">Wallet</a>
+          <a href="#">Help</a>
+        </div> {% endcomment %}
+      </div>
+
+      <div class="second">
+        <div class="bell">
+          <a href="{% url "view_notifications"%}">
+            <img src="{% static 'images/bell.svg' %}" alt="" />
+            <div class="num">9</div>
+          </a>
+        </div>
+        <img src="{% static 'images/settings.svg' %}" alt="" />
+        <p class="logout"><a href="{% url 'logout' %}">Logout</a></p>
+      </div>
+    </header>
+        <header class="header2">
+      <div>
+        <a href="{% url "deposit" %}">Deposit</a>
+        <a href="{% url "send_money"%}">transact</a>
+        <a href="{% url "pending_requests"%}">Request</a>
+        <a href="{% url "all_transactions"%}">History</a>
+      </div>
+      {% comment %} <div class="user">
+        <span id="user">Hi👋 {{username|upper }}</span>
+        <span class="balance">{{balance}} {{currency}}</span>
+      </div> {% endcomment %}
+    </header>
+
+     <div id="card-deposit" class="page">
+          <h1 class="title-head">Card Deposit</h1>
+          <div class="cardinfo">
+            <div class="profile-card">
+                <div class="card-details">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="Enter card number">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YYYY">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="CVV">
+                    <button onclick="saveCardDetails()">Add Card</button>
+                </div>
+            </div>
+    
+    
+            <div class="user-card gradient-mastercard" id="user-card" style="display:none;">
+                <div class="card-info" id="card-number-display"></div>
+                <div class="card-info" id="expiry-date-display"></div>
+                <div class="card-info" id="cvv-display"></div>
+            </div>
+
+            <div id="deposit_money" style="display:none;">
+                <form action="{% url "deposit" %}" method="post">
+                    {% csrf_token %}
+                    <label for="deposit">How much do you what to deposit</label>
+                    <input type="number" name="amount_to_deposit" required> 
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+    
+           </div>
+        </div>
+
+        <script>
+            function saveCardDetails() {
+                var cardNumberInput = document.getElementById('card-number').value;
+                var expiryDateInput = document.getElementById('expiry-date').value;
+                var cvvInput = document.getElementById('cvv').value;
+
+                if(cardNumberInput && expiryDateInput && cvvInput !== "") {
+                    document.getElementById('card-number-display').innerText = "card number    " + cardNumberInput;
+                    document.getElementById('expiry-date-display').innerText = "expiry date    " + expiryDateInput;
+                    document.getElementById('cvv-display').innerText = "cvv    " + cvvInput;
+
+                    // Show the user card
+                    document.getElementById('user-card').style.display = 'block';
+                    document.getElementById('deposit_money').style.display = 'block';
+                } else {
+                    alert("please fill out all field")
+                }
+            }
+
+        </script>
+</body>
+</html>

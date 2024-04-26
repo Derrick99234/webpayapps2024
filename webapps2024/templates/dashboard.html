@@ -16,12 +16,6 @@
             <img src="{% static 'images/webpay-logo.png' %}" alt="logo" />
           </a>
         </div>
-        <div class="nav">
-          <a href="#">Home</a>
-          <a href="#">Send</a>
-          <a href="#">Wallet</a>
-          <a href="#">Help</a>
-        </div>
       </div>
 
       <div class="second">
@@ -37,7 +31,7 @@
     </header>
     <header class="header2">
       <div>
-        <a href="#">Account</a>
+        <a href="{% url "deposit" %}">Deposit</a>
         <a href="{% url "send_money"%}">transact</a>
         <a href="{% url "pending_requests"%}">Request</a>
         <a href="{% url "all_transactions"%}">History</a>
@@ -54,16 +48,15 @@
         <div class="sendCardTxt"></div>
 
         <div class="btns">
-          <a href="/">Send Money</a>
+          <a href="{% url "send_money" %}">Send Money</a>
         </div>
       </div>
       <div class="sendCard">
-        <img src="" alt="image" />
 
         <div class="sendCardTxt"></div>
 
         <div class="btns">
-          <a href="/">Recieve Money</a>
+          <a href="{% url "send_money" %}">Recieve Money</a>
         </div>
       </div>
     </div>

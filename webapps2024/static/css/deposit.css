@@ -1,0 +1,197 @@
+.title-head {
+  font-size: 32px;
+  font-weight: bold;
+  font-family: "Arial Black", sans-serif;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.headCon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 45px;
+  width: 100%;
+  background-color: #90c6e8c9;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile_name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile_name h4 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.profile_name small {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.profile_img {
+  border: 4px solid #1e91d6;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+
+.profile_img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.balance_name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.balance_img img {
+  height: 17px;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.profile-card h {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-details {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+  width: 100%;
+}
+
+.card-details label {
+  font-weight: bold;
+}
+
+.card-details input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.card-details button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.user-card h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-card .card-info {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.user-card .card-info span {
+  margin-right: 10px;
+  color: #fff;
+}
+
+.cardinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  justify-content: start;
+  gap: 50px;
+}
+
+.gradient-mastercard {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 127, 0, 1),
+    rgba(255, 0, 0, 0.5) 45%,
+    rgba(255, 0, 0, 0.5)
+  );
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+  position: relative;
+}
+
+.gradient-mastercard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+#deposit_money label {
+  color: #333;
+  font-size: 1.2rem;
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+#deposit_money input {
+  width: 300px;
+  border: 1px solid #333;
+  height: 40px;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  padding: 10px;
+}
+
+#deposit_money button {
+  padding: 12px 40px;
+  background-color: dodgerblue;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+}
